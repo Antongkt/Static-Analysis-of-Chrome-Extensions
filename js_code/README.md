@@ -6,8 +6,8 @@ The files in this directory are used by the python part of the pipeline source c
 
 
 
-The module`collectAPIs.js` is used to detect API inside the provided javascript file, that might or might not be relevant. Irrelevant APIs are filtered out by the python scripts that calls this module.
+The module`collectAPIs.js` is used to detect API inside javascript files, that might or might not be relevant. Irrelevant APIs are filtered out by the python scripts that calls this module.
 
 
 
-The module `collectNestedScripts.js` will instead look for scripts being imported via statements inside the provided javascript file. It looks for `require` and `import` statements, and only prints the imported scripts found if the imported script is located inside the extension directory. This filters out script imports that are not local files, and reduces the work load on the python scripts of having to differentiate local and not local scripts being imported.
+The module `collectNestedScripts.js` will instead detect the import of scripts. It looks for `require` and `import` statements, and filters out script imports that are are not inside the local extension directory (these are normally remote script files and we do not analyse them)
