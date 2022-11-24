@@ -4,15 +4,15 @@
 
 ### 1. Introduction
 
-The files in this repository contain the source code of the pipeline that I developed for my Thesis with title "You have changed: Temporal Analysis of the Security of Browser Extension Updates".
+The files in this repository contain the source code of the pipeline that I developed for my Thesis title "You have changed: Temporal Analysis of the Security of Browser Extension Updates".
 
-The pipeline consists of three python files and two javascript files. The python files are found inside the python_code directory, and the javascript files inside the js_code directory. Additionally in the js_code directory the node modules required for the scripts to operate can be found.
+The pipeline consists of three python files and two Javascript files. The python files are found inside the `python_code` directory, and the Javascript files inside the `js_code` directory. Additionally in the `js_code` directory the node modules required for the scripts to operate can be found.
 
-To analyze extensions, the user must execute the python files.  If all database tables are empty, the scripts need to be called in a specific order. All python scripts have the following command line execution structure:
+To analyse extensions, the user must execute the python files.  The scripts and their options need to be called in a specific order, because some scripts require the result of the previous script to work . All python scripts have the following command line execution structure:
 
-`python3 script_name -operation name_of_file`
+`python3 script_name -operation path_to_json_file`
 
-The `name_of_file` part is the path to a valid JSON file, which contains extension ID and version names in a key - value pair manner.
+The `path_to_json_file` part is the **relative path** to a valid JSON file, which contains extension ID and respective versions in a key - value pair manner. We already have two examples of such files in this directory.
 
 
 
@@ -22,7 +22,7 @@ The `name_of_file` part is the path to a valid JSON file, which contains extensi
 
 ### 2. Database Overview
 
-There are certain tables in the database inside which the results of the analysis are stored. Some python scripts directly analyze extensions and store results inside the database, while others only make use of already existing results in the database to create the final results.
+There are certain tables in the database inside which the results of the analysis are stored. Some python scripts directly analyse extensions and store results inside the database, while others only make use of already existing results in the database to create the final results.
 
 We provide an overview of the database tables.
 
@@ -161,25 +161,26 @@ The pipeline is run by executing each script sequentially. Because paths to exte
 
 **BEFORE RUNNING THE PIPELINE, MAKE SURE THE FOLLOWING CONDITIONS ARE TRUE**:
 
-- the directory python_code is located inside the home directory of the container
-- the directory js_code is also located inside the home directory of the container
-- the directory ~/extensions/unziped/ exists
-- the directory results is located inside the home directory of the container. Inside it the results in JSON will be dumped for the convenience of the user
-- Directories for all IDs and versions have been created and exist inside ~/extensions/unziped/ with the name id_version
-  - e.g. for extension with id abcdef and version 1_0, the directory ~/extensions/unziped/abcdef_1_0/ must exist
+- the directory `python_code` is located inside the home directory of the container
+- the directory `js_code` is also located inside the home directory of the container
+- all extension zip files are inside the `~/extensions` directory
+- the directory `~/extensions/unziped/` has been created
+- the directory `results` is located inside the home directory of the container. Inside it the results in JSON  format will be dumped for the user to view
+- Directories for all IDs and versions have to already exist inside `~/extensions/unziped/` with the name pattern ID_version
+  - e.g. for extension with ID abcdef and version 1_0, the directory ~/extensions/unziped/abcdef_1_0/ must exist. Inside it the contents of the zip file will be extracted and analysed
 - The manifest of each extension version must be already extracted and located inside the respective ID_version directory
-  - The pipeline acknowledges any directory with no manifest inside as an inability to extract the manifest from the zip file, and marks the version as not analysable
+  - The pipeline acknowledges any directory with no manifest inside as an extension version for which the manifest could not be extracted from the zip file, and marks the version as not analysable
 
 
 
 We maintain the set of all extensions with regular names, inside the file **regular_names.json**. For each ID, all of it's versions are sorted in a chronological order. This is the dataset that we used for our study, as mentioned in the thesis.
-In total there are 226.221 extensions, because we have removed four extension IDs which had regular naming conventions but very large Javascript files that would cause our AST parser to stall (with them the set would have been 226.225 IDs).
+In total there are 226,221 extensions, because we have removed four extension IDs which had regular naming conventions but very large Javascript files that would cause our AST parser to stall (counting them the total would be 226,225 IDs).
 
-All of the requirement process described above is already setup on the container. We have already created a directory for each id_version combination **for all extensions in the regular_names.json** dataset,  and have put the manifest of each version inside, whenever it could be extracted. Every time the pipeline runs, all additional extension files are extracted,  analysed and then deleted, with the exception of the manifest. The manifest is not deleted whenever the pipeline finishes processing a version, but is instead left inside the id_version directory for each id and version.
+All of the requirement process described above is already setup on the container. We have already created a directory for each id_version combination **for all extensions in the regular_names.json** dataset,  and have put the manifest of each version inside, whenever it could be extracted. Every time the pipeline runs, all additional extension files are extracted,  analysed and then deleted, with the exception of the manifest. The manifest is not deleted whenever the pipeline finishes processing a version, but is instead left inside the ID_version directory.
 
 We designed the pipeline this way so that additional executions of the pipeline do not need to create all these directories from the beginning and put the manifests inside them each time. 
 
-If however the user decides to delete all contents of the ~/extensions/unziped directory, and wants to run the pipeline on a bigger dataset of extensions (i.e. a dataset containing extensions that are not inside the **regulrar_names.json** file  ), we specifically provide some helper scripts inside the python_code/helper_scripts directory to allow the user to do so. The user needs to call these scripts first before calling the pipeline in this case.
+
 
 
 
@@ -193,7 +194,7 @@ We provide two example datasets here, the **regular_names.json** set which conta
 
 Assuming the user wants to run the pipeline on all extensions in the **regular_names.json** , he has to do the following 
 
-- Change current directory to  ~/python_code/
+- Change current directory to  `~/python_code/`
 
 - Execute the following commands in the given order: 
 
@@ -204,7 +205,7 @@ Assuming the user wants to run the pipeline on all extensions in the **regular_n
   - `$ python3 merge_tables.py -merge_overview ../regular_names.json`
   - `$ python3 merge_tables.py -merge_changes ../regular_names.json`
 
-  (if another json file with IDs is used instead, just change the file part when executing the commands)
+  (if another JSON file with IDs is used instead, just change the file part when executing the commands)
 
 
 
@@ -213,7 +214,7 @@ Assuming the user wants to run the pipeline on all extensions in the **regular_n
 What each command does is explained below:
 
 - `collect_permissions.py` is called to parse the manifest of each extension version, collect all relevant information from it and store it inside the `permissions_overview` table. This step takes at most 6 minutes when run on 30 processes
-- `static_analysis.py` is called to statically analyse each extension versions for each ID. First all zip files content are extracted, then manifest data is collected that instructs the pipeline on where to look for script files (e.g. background scripts / background pages, WAR pages / scripts etc). The pipeline analyzes all files that could be found and collects all relevant API calls for each relevant script file. Finally, the results are stored in the `api_overview` table, while all data inside the ID_version directory is deleted, with the only exception being the manifest. This step takes at most 10 hours, when run on 30 processes 
+- `static_analysis.py` is called to statically analyse each extension versions for each ID. First all zip files contents are extracted, then manifest data is collected that instructs the pipeline on where to look for script files (e.g. background scripts / background pages, WAR pages / scripts etc). The pipeline analyses all files that could be found and collects all relevant API calls for each relevant script file. Finally, the results are stored in the `api_overview` table, and all data inside the ID_version directory is deleted, with the only exception being the manifest. This step takes at most 10 hours, when run on 30 processes 
 
 
 
