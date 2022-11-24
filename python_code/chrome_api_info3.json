@@ -1,0 +1,1151 @@
+{
+    "activeTab": {},
+    "alarms": {
+        "type": [
+            "Alarm",
+            "AlarmCreateInfo"
+        ],
+        "method": [
+            "clear",
+            "clearAll",
+            "create",
+            "get",
+            "getAll"
+        ],
+        "event": [
+            "onAlarm"
+        ]
+    },
+    "bookmarks": {
+        "type": [
+            "BookmarkTreeNode",
+            "BookmarkTreeNodeUnmodifiable",
+            "CreateDetails"
+        ],
+        "property": [
+            "MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE",
+            "MAX_WRITE_OPERATIONS_PER_HOUR"
+        ],
+        "method": [
+            "create",
+            "get",
+            "getChildren",
+            "getRecent",
+            "getSubTree",
+            "getTree",
+            "move",
+            "remove",
+            "removeTree",
+            "search",
+            "update"
+        ],
+        "event": [
+            "onChanged",
+            "onChildrenReordered",
+            "onCreated",
+            "onImportBegan",
+            "onImportEnded",
+            "onMoved",
+            "onRemoved"
+        ]
+    },
+    "browsingData": {
+        "type": [
+            "DataTypeSet",
+            "RemovalOptions"
+        ],
+        "method": [
+            "remove",
+            "removeAppcache",
+            "removeCache",
+            "removeCacheStorage",
+            "removeCookies",
+            "removeDownloads",
+            "removeFileSystems",
+            "removeFormData",
+            "removeHistory",
+            "removeIndexedDB",
+            "removeLocalStorage",
+            "removePasswords",
+            "removePluginData",
+            "removeServiceWorkers",
+            "removeWebSQL",
+            "settings"
+        ]
+    },
+    "certificateProvider": {
+        "type": [
+            "Algorithm",
+            "CertificateInfo",
+            "CertificatesUpdateRequest",
+            "ClientCertificateInfo",
+            "Error",
+            "Hash",
+            "PinRequestErrorType",
+            "PinRequestType",
+            "PinResponseDetails",
+            "ReportSignatureDetails",
+            "RequestPinDetails",
+            "SetCertificatesDetails",
+            "SignatureRequest",
+            "SignRequest",
+            "StopPinRequestDetails"
+        ],
+        "method": [
+            "reportSignature",
+            "requestPin",
+            "setCertificates",
+            "stopPinRequest"
+        ],
+        "event": [
+            "onCertificatesRequested",
+            "onCertificatesUpdateRequested",
+            "onSignatureRequested",
+            "onSignDigestRequested"
+        ]
+    },
+    "contentSettings": {
+        "type": [
+            "CameraContentSetting",
+            "ContentSetting",
+            "CookiesContentSetting",
+            "FullscreenContentSetting",
+            "ImagesContentSetting",
+            "JavascriptContentSetting",
+            "LocationContentSetting",
+            "MicrophoneContentSetting",
+            "MouselockContentSetting",
+            "MultipleAutomaticDownloadsContentSetting",
+            "NotificationsContentSetting",
+            "PluginsContentSetting",
+            "PopupsContentSetting",
+            "PpapiBrokerContentSetting",
+            "ResourceIdentifier",
+            "Scope"
+        ],
+        "property": [
+            "automaticDownloads",
+            "camera",
+            "cookies",
+            "fullscreen",
+            "images",
+            "javascript",
+            "location",
+            "microphone",
+            "mouselock",
+            "notifications",
+            "plugins",
+            "popups",
+            "unsandboxedPlugins"
+        ]
+    },
+    "contextMenus": {
+        "type": [
+            "ContextType",
+            "ItemType",
+            "OnClickData"
+        ],
+        "property": [
+            "ACTION_MENU_TOP_LEVEL_LIMIT"
+        ],
+        "method": [
+            "create",
+            "remove",
+            "removeAll",
+            "update"
+        ],
+        "event": [
+            "onClicked"
+        ]
+    },
+    "cookies": {
+        "type": [
+            "Cookie",
+            "CookieDetails",
+            "CookieStore",
+            "OnChangedCause",
+            "SameSiteStatus"
+        ],
+        "method": [
+            "get",
+            "getAll",
+            "getAllCookieStores",
+            "remove",
+            "set"
+        ],
+        "event": [
+            "onChanged"
+        ]
+    },
+    "debugger": {
+        "type": [
+            "Debuggee",
+            "DetachReason",
+            "TargetInfo",
+            "TargetInfoType"
+        ],
+        "method": [
+            "attach",
+            "detach",
+            "getTargets",
+            "sendCommand"
+        ],
+        "event": [
+            "onDetach",
+            "onEvent"
+        ]
+    },
+    "declarativeContent": {
+        "type": [
+            "ImageDataType",
+            "PageStateMatcher",
+            "RequestContentScript",
+            "SetIcon",
+            "ShowAction",
+            "ShowPageAction"
+        ],
+        "event": [
+            "onPageChanged"
+        ]
+    },
+    "declarativeNetRequest": {
+        "type": [
+            "DomainType",
+            "ExtensionActionOptions",
+            "HeaderOperation",
+            "IsRegexSupportedResult",
+            "MatchedRule",
+            "MatchedRuleInfo",
+            "MatchedRuleInfoDebug",
+            "MatchedRulesFilter",
+            "ModifyHeaderInfo",
+            "QueryKeyValue",
+            "QueryTransform",
+            "Redirect",
+            "RegexOptions",
+            "RequestDetails",
+            "RequestMethod",
+            "ResourceType",
+            "Rule",
+            "RuleAction",
+            "RuleActionType",
+            "RuleCondition",
+            "Ruleset",
+            "RulesMatchedDetails",
+            "TabActionCountUpdate",
+            "TestMatchOutcomeResult",
+            "TestMatchRequestDetails",
+            "UnsupportedRegexReason",
+            "UpdateRuleOptions",
+            "UpdateRulesetOptions",
+            "URLTransform"
+        ],
+        "property": [
+            "DYNAMIC_RULESET_ID",
+            "GETMATCHEDRULES_QUOTA_INTERVAL",
+            "GUARANTEED_MINIMUM_STATIC_RULES",
+            "MAX_GETMATCHEDRULES_CALLS_PER_INTERVAL",
+            "MAX_NUMBER_OF_DYNAMIC_AND_SESSION_RULES",
+            "MAX_NUMBER_OF_ENABLED_STATIC_RULESETS",
+            "MAX_NUMBER_OF_REGEX_RULES",
+            "MAX_NUMBER_OF_STATIC_RULESETS",
+            "SESSION_RULESET_ID"
+        ],
+        "method": [
+            "getAvailableStaticRuleCount",
+            "getDynamicRules",
+            "getEnabledRulesets",
+            "getMatchedRules",
+            "getSessionRules",
+            "isRegexSupported",
+            "setExtensionActionOptions",
+            "testMatchOutcome",
+            "updateDynamicRules",
+            "updateEnabledRulesets",
+            "updateSessionRules"
+        ],
+        "event": [
+            "onRuleMatchedDebug"
+        ]
+    },
+    "declarativeWebRequest": {
+        "type": [
+            "AddRequestCookie",
+            "AddResponseCookie",
+            "AddResponseHeader",
+            "CancelRequest",
+            "EditRequestCookie",
+            "EditResponseCookie",
+            "FilterResponseCookie",
+            "HeaderFilter",
+            "IgnoreRules",
+            "RedirectByRegEx",
+            "RedirectRequest",
+            "RedirectToEmptyDocument",
+            "RedirectToTransparentImage",
+            "RemoveRequestCookie",
+            "RemoveRequestHeader",
+            "RemoveResponseCookie",
+            "RemoveResponseHeader",
+            "RequestCookie",
+            "RequestMatcher",
+            "ResponseCookie",
+            "SendMessageToExtension",
+            "SetRequestHeader",
+            "Stage"
+        ],
+        "event": [
+            "onMessage",
+            "onRequest"
+        ]
+    },
+    "desktopCapture": {
+        "type": [
+            "DesktopCaptureSourceType",
+            "SystemAudioPreferenceEnum"
+        ],
+        "method": [
+            "cancelChooseDesktopMedia",
+            "chooseDesktopMedia"
+        ]
+    },
+    "documentScan": {
+        "type": [
+            "ScanOptions",
+            "ScanResults"
+        ],
+        "method": [
+            "scan"
+        ]
+    },
+    "downloads": {
+        "type": [
+            "BooleanDelta",
+            "DangerType",
+            "DoubleDelta",
+            "DownloadDelta",
+            "DownloadItem",
+            "DownloadOptions",
+            "DownloadQuery",
+            "FilenameConflictAction",
+            "FilenameSuggestion",
+            "GetFileIconOptions",
+            "HeaderNameValuePair",
+            "HttpMethod",
+            "InterruptReason",
+            "State",
+            "StringDelta"
+        ],
+        "method": [
+            "acceptDanger",
+            "cancel",
+            "download",
+            "erase",
+            "getFileIcon",
+            "open",
+            "pause",
+            "removeFile",
+            "resume",
+            "search",
+            "setShelfEnabled",
+            "show",
+            "showDefaultFolder"
+        ],
+        "event": [
+            "onChanged",
+            "onCreated",
+            "onDeterminingFilename",
+            "onErased"
+        ]
+    },
+    "enterprise.deviceAttributes": {
+        "method": [
+            "getDeviceAnnotatedLocation",
+            "getDeviceAssetId",
+            "getDeviceHostname",
+            "getDeviceSerialNumber",
+            "getDirectoryDeviceId"
+        ]
+    },
+    "enterprise.hardwarePlatform": {
+        "type": [
+            "HardwarePlatformInfo"
+        ],
+        "method": [
+            "getHardwarePlatformInfo"
+        ]
+    },
+    "enterprise.networkingAttributes": {
+        "type": [
+            "NetworkDetails"
+        ],
+        "method": [
+            "getNetworkDetails"
+        ]
+    },
+    "enterprise.platformKeys": {
+        "type": [
+            "Token"
+        ],
+        "method": [
+            "challengeMachineKey",
+            "challengeUserKey",
+            "getCertificates",
+            "getTokens",
+            "importCertificate",
+            "removeCertificate"
+        ]
+    },
+    "experimental": {},
+    "fileBrowserHandler": {
+        "type": [
+            "FileHandlerExecuteEventDetails"
+        ],
+        "method": [
+            "selectFile"
+        ],
+        "event": [
+            "onExecute"
+        ]
+    },
+    "fileSystemProvider": {
+        "type": [
+            "AbortRequestedOptions",
+            "Action",
+            "AddWatcherRequestedOptions",
+            "Change",
+            "ChangeType",
+            "CloseFileRequestedOptions",
+            "CommonActionId",
+            "ConfigureRequestedOptions",
+            "CopyEntryRequestedOptions",
+            "CreateDirectoryRequestedOptions",
+            "CreateFileRequestedOptions",
+            "DeleteEntryRequestedOptions",
+            "EntryMetadata",
+            "ExecuteActionRequestedOptions",
+            "FileSystemInfo",
+            "GetActionsRequestedOptions",
+            "GetMetadataRequestedOptions",
+            "MountOptions",
+            "MoveEntryRequestedOptions",
+            "NotifyOptions",
+            "OpenedFile",
+            "OpenFileMode",
+            "OpenFileRequestedOptions",
+            "ProviderError",
+            "ReadDirectoryRequestedOptions",
+            "ReadFileRequestedOptions",
+            "RemoveWatcherRequestedOptions",
+            "TruncateRequestedOptions",
+            "UnmountOptions",
+            "UnmountRequestedOptions",
+            "Watcher",
+            "WriteFileRequestedOptions"
+        ],
+        "method": [
+            "get",
+            "getAll",
+            "mount",
+            "notify",
+            "unmount"
+        ],
+        "event": [
+            "onAbortRequested",
+            "onAddWatcherRequested",
+            "onCloseFileRequested",
+            "onConfigureRequested",
+            "onCopyEntryRequested",
+            "onCreateDirectoryRequested",
+            "onCreateFileRequested",
+            "onDeleteEntryRequested",
+            "onExecuteActionRequested",
+            "onGetActionsRequested",
+            "onGetMetadataRequested",
+            "onMountRequested",
+            "onMoveEntryRequested",
+            "onOpenFileRequested",
+            "onReadDirectoryRequested",
+            "onReadFileRequested",
+            "onRemoveWatcherRequested",
+            "onTruncateRequested",
+            "onUnmountRequested",
+            "onWriteFileRequested"
+        ]
+    },
+    "fontSettings": {
+        "type": [
+            "FontName",
+            "GenericFamily",
+            "LevelOfControl",
+            "ScriptCode"
+        ],
+        "method": [
+            "clearDefaultFixedFontSize",
+            "clearDefaultFontSize",
+            "clearFont",
+            "clearMinimumFontSize",
+            "getDefaultFixedFontSize",
+            "getDefaultFontSize",
+            "getFont",
+            "getFontList",
+            "getMinimumFontSize",
+            "setDefaultFixedFontSize",
+            "setDefaultFontSize",
+            "setFont",
+            "setMinimumFontSize"
+        ],
+        "event": [
+            "onDefaultFixedFontSizeChanged",
+            "onDefaultFontSizeChanged",
+            "onFontChanged",
+            "onMinimumFontSizeChanged"
+        ]
+    },
+    "gcm": {
+        "property": [
+            "MAX_MESSAGE_SIZE"
+        ],
+        "method": [
+            "register",
+            "send",
+            "unregister"
+        ],
+        "event": [
+            "onMessage",
+            "onMessagesDeleted",
+            "onSendError"
+        ]
+    },
+    "history": {
+        "type": [
+            "HistoryItem",
+            "TransitionType",
+            "UrlDetails",
+            "VisitItem"
+        ],
+        "method": [
+            "addUrl",
+            "deleteAll",
+            "deleteRange",
+            "deleteUrl",
+            "getVisits",
+            "search"
+        ],
+        "event": [
+            "onVisited",
+            "onVisitRemoved"
+        ]
+    },
+    "identity": {
+        "type": [
+            "AccountInfo",
+            "AccountStatus",
+            "InvalidTokenDetails",
+            "ProfileDetails",
+            "ProfileUserInfo",
+            "TokenDetails",
+            "WebAuthFlowDetails"
+        ],
+        "method": [
+            "clearAllCachedAuthTokens",
+            "getAccounts",
+            "getAuthToken",
+            "getProfileUserInfo",
+            "getRedirectURL",
+            "launchWebAuthFlow",
+            "removeCachedAuthToken"
+        ],
+        "event": [
+            "onSignInChanged"
+        ]
+    },
+    "idle": {
+        "type": [
+            "IdleState"
+        ],
+        "method": [
+            "getAutoLockDelay",
+            "queryState",
+            "setDetectionInterval"
+        ],
+        "event": [
+            "onStateChanged"
+        ]
+    },
+    "loginState": {
+        "type": [
+            "ProfileType",
+            "SessionState"
+        ],
+        "method": [
+            "getProfileType",
+            "getSessionState"
+        ],
+        "event": [
+            "onSessionStateChanged"
+        ]
+    },
+    "management": {
+        "type": [
+            "ExtensionDisabledReason",
+            "ExtensionInfo",
+            "ExtensionInstallType",
+            "ExtensionType",
+            "IconInfo",
+            "LaunchType",
+            "UninstallOptions"
+        ],
+        "method": [
+            "canInstallReplacementAndroidApp",
+            "createAppShortcut",
+            "generateAppForLink",
+            "get",
+            "getAll",
+            "getPermissionWarningsById",
+            "getPermissionWarningsByManifest",
+            "getSelf",
+            "installReplacementAndroidApp",
+            "installReplacementWebApp",
+            "launchApp",
+            "setEnabled",
+            "setLaunchType",
+            "uninstall",
+            "uninstallSelf"
+        ],
+        "event": [
+            "onDisabled",
+            "onEnabled",
+            "onInstalled",
+            "onUninstalled"
+        ]
+    },
+    "nativeMessaging": {},
+    "notifications": {
+        "type": [
+            "NotificationBitmap",
+            "NotificationButton",
+            "NotificationItem",
+            "NotificationOptions",
+            "PermissionLevel",
+            "TemplateType"
+        ],
+        "method": [
+            "clear",
+            "create",
+            "getAll",
+            "getPermissionLevel",
+            "update"
+        ],
+        "event": [
+            "onButtonClicked",
+            "onClicked",
+            "onClosed",
+            "onPermissionLevelChanged",
+            "onShowSettings"
+        ]
+    },
+    "pageCapture": {
+        "method": [
+            "saveAsMHTML"
+        ]
+    },
+    "platformKeys": {
+        "type": [
+            "ClientCertificateRequest",
+            "ClientCertificateType",
+            "Match",
+            "SelectDetails",
+            "VerificationDetails",
+            "VerificationResult"
+        ],
+        "method": [
+            "getKeyPair",
+            "getKeyPairBySpki",
+            "selectClientCertificates",
+            "subtleCrypto",
+            "verifyTLSServerCertificate"
+        ]
+    },
+    "power": {
+        "type": [
+            "Level"
+        ],
+        "method": [
+            "releaseKeepAwake",
+            "requestKeepAwake"
+        ]
+    },
+    "printerProvider": {
+        "type": [
+            "PrinterInfo",
+            "PrintError",
+            "PrintJob"
+        ],
+        "event": [
+            "onGetCapabilityRequested",
+            "onGetPrintersRequested",
+            "onGetUsbPrinterInfoRequested",
+            "onPrintRequested"
+        ]
+    },
+    "printing": {
+        "type": [
+            "GetPrinterInfoResponse",
+            "JobStatus",
+            "Printer",
+            "PrinterSource",
+            "PrinterStatus",
+            "SubmitJobRequest",
+            "SubmitJobResponse",
+            "SubmitJobStatus"
+        ],
+        "property": [
+            "MAX_GET_PRINTER_INFO_CALLS_PER_MINUTE",
+            "MAX_SUBMIT_JOB_CALLS_PER_MINUTE"
+        ],
+        "method": [
+            "cancelJob",
+            "getPrinterInfo",
+            "getPrinters",
+            "submitJob"
+        ],
+        "event": [
+            "onJobStatusChanged"
+        ]
+    },
+    "printingMetrics": {
+        "type": [
+            "ColorMode",
+            "DuplexMode",
+            "MediaSize",
+            "Printer",
+            "PrinterSource",
+            "PrintJobInfo",
+            "PrintJobSource",
+            "PrintJobStatus",
+            "PrintSettings"
+        ],
+        "method": [
+            "getPrintJobs"
+        ],
+        "event": [
+            "onPrintJobFinished"
+        ]
+    },
+    "privacy": {
+        "type": [
+            "IPHandlingPolicy"
+        ],
+        "property": [
+            "network",
+            "services",
+            "websites"
+        ]
+    },
+    "processes": {
+        "type": [
+            "Cache",
+            "Process",
+            "ProcessType",
+            "TaskInfo"
+        ],
+        "method": [
+            "getProcessIdForTab",
+            "getProcessInfo",
+            "terminate"
+        ],
+        "event": [
+            "onCreated",
+            "onExited",
+            "onUnresponsive",
+            "onUpdated",
+            "onUpdatedWithMemory"
+        ]
+    },
+    "proxy": {
+        "type": [
+            "Mode",
+            "PacScript",
+            "ProxyConfig",
+            "ProxyRules",
+            "ProxyServer",
+            "Scheme"
+        ],
+        "property": [
+            "settings"
+        ],
+        "event": [
+            "onProxyError"
+        ]
+    },
+    "scripting": {
+        "type": [
+            "ContentScriptFilter",
+            "CSSInjection",
+            "ExecutionWorld",
+            "InjectionResult",
+            "InjectionTarget",
+            "RegisteredContentScript",
+            "ScriptInjection",
+            "StyleOrigin"
+        ],
+        "method": [
+            "executeScript",
+            "getRegisteredContentScripts",
+            "insertCSS",
+            "registerContentScripts",
+            "removeCSS",
+            "unregisterContentScripts",
+            "updateContentScripts"
+        ]
+    },
+    "search": {
+        "type": [
+            "Disposition",
+            "QueryInfo"
+        ],
+        "method": [
+            "query"
+        ]
+    },
+    "sessions": {
+        "type": [
+            "Device",
+            "Filter",
+            "Session"
+        ],
+        "property": [
+            "MAX_SESSION_RESULTS"
+        ],
+        "method": [
+            "getDevices",
+            "getRecentlyClosed",
+            "restore"
+        ],
+        "event": [
+            "onChanged"
+        ]
+    },
+    "signedInDevices": {},
+    "storage": {
+        "type": [
+            "AccessLevel",
+            "StorageArea",
+            "StorageChange"
+        ],
+        "property": [
+            "local",
+            "managed",
+            "session",
+            "sync"
+        ],
+        "event": [
+            "onChanged"
+        ]
+    },
+    "system.cpu": {
+        "type": [
+            "CpuInfo",
+            "CpuTime",
+            "ProcessorInfo"
+        ],
+        "method": [
+            "getInfo"
+        ]
+    },
+    "system.display": {
+        "type": [
+            "Bounds",
+            "DisplayLayout",
+            "DisplayMode",
+            "DisplayProperties",
+            "DisplayUnitInfo",
+            "Edid",
+            "GetInfoFlags",
+            "Insets",
+            "LayoutPosition",
+            "MirrorMode",
+            "MirrorModeInfo",
+            "Point",
+            "TouchCalibrationPair",
+            "TouchCalibrationPairQuad"
+        ],
+        "method": [
+            "clearTouchCalibration",
+            "completeCustomTouchCalibration",
+            "enableUnifiedDesktop",
+            "getDisplayLayout",
+            "getInfo",
+            "overscanCalibrationAdjust",
+            "overscanCalibrationComplete",
+            "overscanCalibrationReset",
+            "overscanCalibrationStart",
+            "setDisplayLayout",
+            "setDisplayProperties",
+            "setMirrorMode",
+            "showNativeTouchCalibration",
+            "startCustomTouchCalibration"
+        ],
+        "event": [
+            "onDisplayChanged"
+        ]
+    },
+    "system.memory": {
+        "type": [
+            "MemoryInfo"
+        ],
+        "method": [
+            "getInfo"
+        ]
+    },
+    "system.storage": {
+        "type": [
+            "EjectDeviceResultCode",
+            "StorageAvailableCapacityInfo",
+            "StorageUnitInfo",
+            "StorageUnitType"
+        ],
+        "method": [
+            "ejectDevice",
+            "getAvailableCapacity",
+            "getInfo"
+        ],
+        "event": [
+            "onAttached",
+            "onDetached"
+        ]
+    },
+    "tabCapture": {
+        "type": [
+            "CaptureInfo",
+            "CaptureOptions",
+            "GetMediaStreamOptions",
+            "MediaStreamConstraint",
+            "TabCaptureState"
+        ],
+        "method": [
+            "capture",
+            "getCapturedTabs",
+            "getMediaStreamId"
+        ],
+        "event": [
+            "onStatusChanged"
+        ]
+    },
+    "tabGroups": {
+        "type": [
+            "Color",
+            "TabGroup"
+        ],
+        "property": [
+            "TAB_GROUP_ID_NONE"
+        ],
+        "method": [
+            "get",
+            "move",
+            "query",
+            "update"
+        ],
+        "event": [
+            "onCreated",
+            "onMoved",
+            "onRemoved",
+            "onUpdated"
+        ]
+    },
+    "tabs": {
+        "type": [
+            "MutedInfo",
+            "MutedInfoReason",
+            "Tab",
+            "TabStatus",
+            "WindowType",
+            "ZoomSettings",
+            "ZoomSettingsMode",
+            "ZoomSettingsScope"
+        ],
+        "property": [
+            "MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND",
+            "TAB_ID_NONE"
+        ],
+        "method": [
+            "captureVisibleTab",
+            "connect",
+            "create",
+            "detectLanguage",
+            "discard",
+            "duplicate",
+            "executeScript",
+            "get",
+            "getAllInWindow",
+            "getCurrent",
+            "getSelected",
+            "getZoom",
+            "getZoomSettings",
+            "goBack",
+            "goForward",
+            "group",
+            "highlight",
+            "insertCSS",
+            "move",
+            "query",
+            "reload",
+            "remove",
+            "removeCSS",
+            "sendMessage",
+            "sendRequest",
+            "setZoom",
+            "setZoomSettings",
+            "ungroup",
+            "update"
+        ],
+        "event": [
+            "onActivated",
+            "onActiveChanged",
+            "onAttached",
+            "onCreated",
+            "onDetached",
+            "onHighlightChanged",
+            "onHighlighted",
+            "onMoved",
+            "onRemoved",
+            "onReplaced",
+            "onSelectionChanged",
+            "onUpdated",
+            "onZoomChange"
+        ]
+    },
+    "topSites": {
+        "type": [
+            "MostVisitedURL"
+        ],
+        "method": [
+            "get"
+        ]
+    },
+    "tts": {
+        "type": [
+            "EventType",
+            "TtsEvent",
+            "TtsOptions",
+            "TtsVoice",
+            "VoiceGender"
+        ],
+        "method": [
+            "getVoices",
+            "isSpeaking",
+            "pause",
+            "resume",
+            "speak",
+            "stop"
+        ]
+    },
+    "ttsEngine": {
+        "type": [
+            "AudioBuffer",
+            "AudioStreamOptions",
+            "SpeakOptions",
+            "VoiceGender"
+        ],
+        "method": [
+            "updateVoices"
+        ],
+        "event": [
+            "onPause",
+            "onResume",
+            "onSpeak",
+            "onSpeakWithAudioStream",
+            "onStop"
+        ]
+    },
+    "vpnProvider": {
+        "type": [
+            "Parameters",
+            "PlatformMessage",
+            "UIEvent",
+            "VpnConnectionState"
+        ],
+        "method": [
+            "createConfig",
+            "destroyConfig",
+            "notifyConnectionStateChanged",
+            "sendPacket",
+            "setParameters"
+        ],
+        "event": [
+            "onConfigCreated",
+            "onConfigRemoved",
+            "onPacketReceived",
+            "onPlatformMessage",
+            "onUIEvent"
+        ]
+    },
+    "wallpaper": {
+        "type": [
+            "WallpaperLayout"
+        ],
+        "method": [
+            "setWallpaper"
+        ]
+    },
+    "webNavigation": {
+        "type": [
+            "TransitionQualifier",
+            "TransitionType"
+        ],
+        "method": [
+            "getAllFrames",
+            "getFrame"
+        ],
+        "event": [
+            "onBeforeNavigate",
+            "onCommitted",
+            "onCompleted",
+            "onCreatedNavigationTarget",
+            "onDOMContentLoaded",
+            "onErrorOccurred",
+            "onHistoryStateUpdated",
+            "onReferenceFragmentUpdated",
+            "onTabReplaced"
+        ]
+    },
+    "webRequest": {
+        "type": [
+            "BlockingResponse",
+            "FormDataItem",
+            "HttpHeaders",
+            "IgnoredActionType",
+            "OnAuthRequiredOptions",
+            "OnBeforeRedirectOptions",
+            "OnBeforeRequestOptions",
+            "OnBeforeSendHeadersOptions",
+            "OnCompletedOptions",
+            "OnErrorOccurredOptions",
+            "OnHeadersReceivedOptions",
+            "OnResponseStartedOptions",
+            "OnSendHeadersOptions",
+            "RequestFilter",
+            "ResourceType",
+            "UploadData"
+        ],
+        "property": [
+            "MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES"
+        ],
+        "method": [
+            "handlerBehaviorChanged"
+        ],
+        "event": [
+            "onActionIgnored",
+            "onAuthRequired",
+            "onBeforeRedirect",
+            "onBeforeRequest",
+            "onBeforeSendHeaders",
+            "onCompleted",
+            "onErrorOccurred",
+            "onHeadersReceived",
+            "onResponseStarted",
+            "onSendHeaders"
+        ]
+    }
+}
