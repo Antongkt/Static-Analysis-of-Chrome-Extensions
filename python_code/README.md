@@ -12,13 +12,13 @@ The files in this directory implement the core logic of the pipeline.
 
 ### High level overview
 
-
-
-each python script receives one argument indicating what operation it should perform, and one argument that points to a valid JSON file with extension ID - versions key - value pairs of all extensions that are to be analysed. Please remember to first setup the structure of the directories in the container as specified in the repository home page, before running the scripts. 
+Each python script receives one argument indicating what operation it should perform, and one argument that points to a valid JSON file with extension ID - versions key - value pairs of all extensions that are to be analysed (**relative path is used**). Please remember to first setup the structure of the directories in the container as specified in the repository home page, before running the scripts. 
 
 
 
-Below we provide a high level overview of how each script operates. Every script's main process spawns 30 processes to work on extension IDs. Each script execution will generate a resulting JSON file with the results that the script stored in the database inside the ~/results/ directory. This is for the convenience of the user, to view how the results look like. Additionally an error_log file is generated, with tolerated small errors encountered during the analysis.
+Below we provide a high level overview of how each script operates. Every script's main process spawns 30 processes to work on extension IDs. Each script execution will generate a resulting JSON file with the results that the script stored in the database inside the `~/results/` directory. This is for the convenience of the user, to view how the results look like. Additionally an error_log file is generated, with tolerated small errors encountered during the analysis.
+
+Each script will first clear the respective table where it stores results in, before storing the results, to avoid errors.
 
 
 
@@ -118,6 +118,8 @@ Below we provide a high level overview of how each script operates. Every script
     - All changes in requested and utilized permissions between updates are evaluated
     - A transition grade is assigned on each update
     - The results are stored in the database table `changes_complete`
+
+
 
 
 
