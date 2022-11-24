@@ -213,7 +213,7 @@ Assuming the user wants to run the pipeline on all extensions in the **regular_n
 
 What each command does is explained below:
 
-- `collect_permissions.py` is called to parse the manifest of each extension version, collect all relevant information from it and store it inside the `permissions_overview` table. This step takes at most 6 minutes when run on 30 processes
+- `collect_permissions.py` is called to parse the manifest of each extension version, collect all relevant information from it and store it inside the `permissions_overview` table. This step takes at most 5 minutes when run on 30 processes
 - `static_analysis.py` is called to statically analyse each extension versions for each ID. First all zip files contents are extracted, then manifest data is collected that instructs the pipeline on where to look for script files (e.g. background scripts / background pages, WAR pages / scripts etc). The pipeline analyses all files that could be found and collects all relevant API calls for each relevant script file. Finally, the results are stored in the `api_overview` table, and all data inside the ID_version directory is deleted, with the only exception being the manifest. This step takes at most 10 hours, when run on 30 processes 
 
 
@@ -222,16 +222,16 @@ What each command does is explained below:
 
 The next four commands do not access any extension files / manifests anymore. Instead they just use the results inside the `api_overview` and `permissions_overview` tables to compute the final results. 
 
-- `collect_permissions.py` is called to compare changes in requested permissions between versions for each ID. It does so by analysing the data inside the table `permissions_overview`. Results are stored inside the table `permission_changes`. Estimated time is 5 minutes when running on 30 processes.
-- `static_analysis.py` is called to compare changes in API usage between versions for each ID. It does so by analysing the data inside the table `api_overview`. Results are stored inside the table `api_changes`. Estimated time is 5 minutes when running on 30 processes.
+- `collect_permissions.py` is called to compare changes in requested permissions between versions for each ID. It does so by analysing the data inside the table `permissions_overview`. Results are stored inside the table `permission_changes`. Estimated time is 2 minutes when running on 30 processes.
+- `static_analysis.py` is called to compare changes in API usage between versions for each ID. It does so by analysing the data inside the table `api_overview`. Results are stored inside the table `api_changes`. Estimated time is 2 minutes when running on 30 processes.
 
 
 
 Finally, the last two commands simply merge all data computed so far to produce the final results, and store them in the `overview_complete` and `changes_complete` tables.
 
-- `merge_tables` is first called to combine the data from both `api_overview` and `permissions_overview` tables and store the results inside the `overview_complete` table. Estimated time is 6 minutes running on 30 processes.
-- `merge_tables` is then called to combine the data from the tables `api_changes` and `permission_changes` , and store the results inside the `changes_complete` table. Some data from `overview_complete` is also used to better understand the usage of permissions.
+- `merge_tables` is first called to combine the data from both `api_overview` and `permissions_overview` tables and store the results inside the `overview_complete` table. Estimated time is 4 minutes running on 30 processes.
+- `merge_tables` is then called to combine the data from the tables `api_changes` and `permission_changes` , and store the results inside the `changes_complete` table. Some data from `overview_complete` is also used to better understand the usage of permissions. Estimated time is 3 minutes running on 30 processes.
 
 
 
-Note: while all individual commands produce results (namely the error_log and the resulting table content in JSON format, both store in the results directory), results of the intermediate commands do not yet contain complete information. e.g. `api_overview` and `api_changes` contain information about used APIs, but not yet about the complete list of permissions utilized (e.g. utilization of special permissions such as background, activeTab etc is not yet displayed on those tables). This is not an error, but the way the pipeline operates. This must be taken into account when inspecting intermediate results.
+Note: while all individual commands produce results (namely the error_log and the resulting table content in JSON format, both stored in the `results` directory), results of the intermediate commands do not yet contain complete information. e.g. `api_overview` and `api_changes` contain information about used APIs, but not yet about the complete list of permissions utilized (e.g. utilization of special permissions such as background, activeTab etc is not yet displayed on those tables). This is not an error, but the way the pipeline operates. This must be taken into account when inspecting intermediate results.
