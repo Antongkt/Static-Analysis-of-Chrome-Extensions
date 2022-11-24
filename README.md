@@ -1,18 +1,18 @@
-## Pipeline for the static analysis of chrome extensions
+## Pipeline for analysing chrome extensions
 
 
 
 ### 1. Introduction
 
-The files in this repository contain the source code of the pipeline that I developed for my Thesis title "You have changed: Temporal Analysis of the Security of Browser Extension Updates".
+The files in this repository contain the source code of the pipeline that I developed for my Thesis with title "You have changed: Temporal Analysis of the Security of Browser Extension Updates".
 
 The pipeline consists of three python files and two Javascript files. The python files are found inside the `python_code` directory, and the Javascript files inside the `js_code` directory. Additionally in the `js_code` directory the node modules required for the scripts to operate can be found.
 
-To analyse extensions, the user must execute the python files.  The scripts and their options need to be called in a specific order, because some scripts require the result of the previous script to work . All python scripts have the following command line execution structure:
+To analyse extensions, the user must execute the python files.  The scripts and their options need to be called in a specific order, because some scripts require results from previous scripts to work . All python scripts have the following command line execution structure:
 
 `python3 script_name -operation path_to_json_file`
 
-The `path_to_json_file` part is the **relative path** to a valid JSON file, which contains extension ID and respective versions in a key - value pair manner. We already have two examples of such files in this directory.
+The `path_to_json_file` part is the **relative path** to a valid JSON file, which contains extension ID and respective versions in a key - value pair manner. We already have three examples of such files in this directory. Versions inside the JSON file must be sorted from older to newer. Versions inside our example JSON files have already been sorted.
 
 
 
@@ -38,8 +38,8 @@ The following two tables provide a general overview on permissions requested and
 
 - Table `permissions_overview` has the following columns:
 
-  - **id**: contains the extension id
-  - **info**: contains information for each version of a specific id, in JSON format. Information includes the following:
+  - **id**: contains the extension ID
+  - **info**: contains information for each version of a specific ID, in JSON format. Information includes the following:
     - could the version be analysed 
     -  what manifest version is it using 
     - list of API and host permissions requested
@@ -49,10 +49,10 @@ The following two tables provide a general overview on permissions requested and
 
 - Table `api_overview` has the following columns:
 
-  - **id**: contains the extension id
-  - **info**: contains information for each version of a specific id, in JSON format. Information includes the following:
+  - **id**: contains the extension ID
+  - **info**: contains information for each version of a specific ID, in JSON format. Information includes the following:
     - could the version be analysed 
-    - what APIs is each script using (out of all background scripts and out of all content scripts that could be found)
+    - what APIs is each script using (derived from all background and foreground scripts that could be analysed)
 
 
 
@@ -88,11 +88,11 @@ The following two tables contain information about changes between extension upd
 - Table `api_changes` contains the following columns:
   - **id:** contains the extension ID
   - **api_info**: contains information in JSON format, for each update of a specific ID **which introduces a change in the API usage (relevant APIs only)**. Info about updates that introduce no change in API usage is not stored here. Information stored for each update includes the following:
-  - specific changes in APIs used that this update introduces
+    - specific changes in APIs used that this update introduces
     - name of the last update that introduced changes in requested permissions before this one (useful to keep track of the order)
   - **total_versions**: contains the count of total extension versions for this ID
   - **valid_versions**: contains the count of the total extension versions for this ID that could be analysed
-  - **api_change_updates**: contains the count of updates, that were analysable and introduced a change in API usage
+  - **api_change_updates**: contains the count of updates that introduced a change in API usage
 
 
 
@@ -176,9 +176,9 @@ The pipeline is run by executing each script sequentially. Because paths to exte
 We maintain the set of all extensions with regular names, inside the file **regular_names.json**. For each ID, all of it's versions are sorted in a chronological order. This is the dataset that we used for our study, as mentioned in the thesis.
 In total there are 226,221 extensions, because we have removed four extension IDs which had regular naming conventions but very large Javascript files that would cause our AST parser to stall (counting them the total would be 226,225 IDs).
 
-All of the requirement process described above is already setup on the container. We have already created a directory for each id_version combination **for all extensions in the regular_names.json** dataset,  and have put the manifest of each version inside, whenever it could be extracted. Every time the pipeline runs, all additional extension files are extracted,  analysed and then deleted, with the exception of the manifest. The manifest is not deleted whenever the pipeline finishes processing a version, but is instead left inside the ID_version directory.
+All of the requirement process described above is already setup on the container. We have already created a directory for each id_version combination **for all extensions in the regular_names.json** dataset,  and have put the manifest of each version inside, whenever it could be extracted. Every time the pipeline runs, all additional extension files are extracted,  analysed and then deleted, with the exception of the manifest. The manifest is not deleted whenever the pipeline finishes processing a version, but is instead left inside the ID_version directory, so that the pipeline can be executed again.
 
-We designed the pipeline this way so that additional executions of the pipeline do not need to create all these directories from the beginning and put the manifests inside them each time. 
+The pipeline was designed to create all ID_version directories every time it was run, and extract all the manifests. Because eventually we ended up executing the pipeline numerous times for testing, and every single time on the same extension dataset, it was instead changed to expect that directories are already created and manifests already located inside of them. This was done so that additional executions of the pipeline do not need to create all these directories from the beginning and put the manifests inside them each time. 
 
 
 
