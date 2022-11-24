@@ -12,7 +12,7 @@ The files in this directory implement the core logic of the pipeline.
 
 ### High level overview
 
-Each python script receives one argument indicating what operation it should perform, and one argument that points to a valid JSON file with extension ID - versions key - value pairs of all extensions that are to be analysed (**relative path is used**). Please remember to first setup the structure of the directories in the container as specified in the repository home page, before running the scripts. 
+Each python script receives one argument indicating what operation it should perform, and one argument that points to a valid JSON file with extension ID - versions pairs of all extensions that are to be analysed (**relative path is used**). Please remember to first setup the structure of the directories in the container as specified in the repository home page, before running the scripts. 
 
 
 
